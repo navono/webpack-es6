@@ -31,3 +31,6 @@ npm install http-server -g
 
 http-server
 打开浏览器访问http://127.0.0.1:8080/,
+
+
+在命令中输入：webpack -w，生成编译后的js文件。

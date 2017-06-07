@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-07 15:25:54
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-07 15:43:23
+ * @Last Modified time: 2017-06-07 16:10:18
  */
 
 // CommonJS写法
@@ -22,5 +22,3 @@ module.exports = {
         }]
     }
 }
-
-// 在命令中输入：webpack -w
