@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-28 15:20:50
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-28 15:58:16
+ * @Last Modified time: 2017-06-28 16:29:08
  * @Description
  */
 import _ from 'lodash';
@@ -18,8 +18,6 @@ function component() {
 
   // 将图像添加到我们现有的 div。
   let myIcon = new Image();
-
-  console.log(myIcon);
   myIcon.src = Icon;
 
   element.appendChild(myIcon);
