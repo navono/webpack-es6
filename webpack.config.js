@@ -2,6 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  // 因为webpack输出的bundle文件，当JavaScript抛出异常时，我们需要知道错误发生在哪个文件的哪一行
+  devtool: "cheap-eval-source-map",
+  // 如果从Sources 面板保存时设置 Chrome 以保持更改 则无需刷新页面，你将不得不设置 webpack 来使用
+  // devtool: "inline-source-map",
+  // 继续编辑和保存来自Chrome或源文件的更改。
+
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',

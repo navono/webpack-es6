@@ -29,8 +29,9 @@ npm install babel-core babel-loader babel-preset-es2015
 npm install http-server -g
 运行 http-server ./dist -o
 
-http-server
-打开浏览器访问http://127.0.0.1:8080/,
+打开浏览器访问[http://127.0.0.1:8080/,]
 
 
 在命令中输入：webpack -w，生成编译后的js文件。
+
+webapck-dev-server 使用内存编译
