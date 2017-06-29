@@ -65,10 +65,10 @@ module.exports = {
     // })
   ],
 
-  // 别名
+  // 别名，还有一个 ProvidePlugin 插件可以实现按需的全局变量名称依赖
+  // https://doc.webpack-china.org/guides/shimming/
   // resolve: {
   //   alias: {
-
   //   }
   // },
 

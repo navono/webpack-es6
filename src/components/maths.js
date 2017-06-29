@@ -2,7 +2,7 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-29 10:37:14
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-29 10:38:35
+ * @Last Modified time: 2017-06-29 13:20:30
  * @Description
  * 这个文件展示如何使用 Tree Shaking 技术
  */
