@@ -27,7 +27,7 @@ npm install babel-core babel-loader babel-preset-es2015
 安装http-server
 
 npm install http-server -g
-运行
+运行 http-server ./dist -o
 
 http-server
 打开浏览器访问http://127.0.0.1:8080/,

@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -22,5 +23,12 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Wellcom webpack',
+      template: path.resolve(__dirname, './index.html'),
+      favicon: path.resolve(__dirname, './src/favicon.ico')
+    })
+  ]
 }
