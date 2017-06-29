@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   // 因为webpack输出的bundle文件，当JavaScript抛出异常时，我们需要知道错误发生在哪个文件的哪一行
@@ -17,7 +18,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../build')
   },
   module: {
     rules: [
@@ -27,10 +28,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader'
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -48,6 +48,7 @@ module.exports = {
     }),
     // 启用 HMR
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('styles.css'),
 
     // 将 production的配置分离到独立的配置文件中
     // new webpack.optimize.UglifyJsPlugin({
@@ -75,7 +76,7 @@ module.exports = {
   devServer: {
     // 告诉 dev-server 在使用HMR
     hot: true,
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: path.resolve(__dirname, '../build'),
     publicPath: '/',
     port: 8888,
   }

@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.js'),
@@ -17,10 +18,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader'
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -51,6 +51,7 @@ module.exports = {
       //           (webpack.options.devtool.indexOf("sourcemap") >= 0 || 
       //             webpack.options.devtool.indexOf("source-map") >= 0),
     }),
+    new ExtractTextPlugin('styles.css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
