@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   // 因为webpack输出的bundle文件，当JavaScript抛出异常时，我们需要知道错误发生在哪个文件的哪一行
@@ -35,6 +36,14 @@ module.exports = {
       title: 'Wellcom webpack',
       template: path.resolve(__dirname, './index.html'),
       favicon: path.resolve(__dirname, './src/favicon.ico')
-    })
-  ]
+    }),
+    // 启用 HMR
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    // 告诉 dev-server 在使用HMR
+    hot: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  }
 }

@@ -35,3 +35,8 @@ npm install http-server -g
 在命令中输入：webpack -w，生成编译后的js文件。
 
 webapck-dev-server 使用内存编译
+HMR 不适用于生产环境，这意味着它应当只在开发环境使用。
+其他的loader包括：
+react hot loader
+vue loader
+redux HMR

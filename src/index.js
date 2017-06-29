@@ -2,12 +2,21 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-28 15:20:50
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-29 09:06:00
+ * @Last Modified time: 2017-06-29 09:14:16
  * @Description
  */
 import _ from 'lodash';
 import './style.css';
 import Icon from './icon.svg'
+import Library from './library'
+
+// 测试 HMR
+if (module.hot) {
+  module.hot.accept('./library', () => {
+    console.log('Accepting the updated module!');
+    Library.log();
+  })
+}
 
 function component() {
   let element = document.createElement('div');
