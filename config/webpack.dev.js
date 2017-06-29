@@ -13,10 +13,10 @@ module.exports = {
   entry: [
     path.resolve(__dirname, '../src/index.js'),
     // 'webpack/hot/dev-server',
-    // 'webpack-dev-server/client?http://localhost:8080'
+    'webpack-dev-server/client?http://localhost:8888'
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../dist')
   },
   module: {
@@ -47,7 +47,7 @@ module.exports = {
       favicon: path.resolve(__dirname, '../src/favicon.ico')
     }),
     // 启用 HMR
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
 
     // 将 production的配置分离到独立的配置文件中
     // new webpack.optimize.UglifyJsPlugin({
@@ -64,10 +64,19 @@ module.exports = {
     //   'process.env.NODE_ENV': JSON.stringify('production')
     // })
   ],
+
+  // 别名
+  // resolve: {
+  //   alias: {
+
+  //   }
+  // },
+
   devServer: {
     // 告诉 dev-server 在使用HMR
     hot: true,
     contentBase: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    publicPath: '/',
+    port: 8888,
   }
 }

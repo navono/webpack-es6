@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.js'),
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash].js',  // 允许根据文件内容生成哈希值，要注意的是不要在开发环境下使用 chunkhash ,这样会增加编译时间
     path: path.resolve(__dirname, '../dist')
   },
   module: {
