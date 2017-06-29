@@ -34,9 +34,18 @@ npm install http-server -g
 
 在命令中输入：webpack -w，生成编译后的js文件。
 
+---
+
 webapck-dev-server 使用内存编译
 HMR 不适用于生产环境，这意味着它应当只在开发环境使用。
 其他的loader包括：
 react hot loader
 vue loader
 redux HMR
+
+---
+
+生产环境中使用webpack -p(也可以运行 webpack --optimize-minimize --define process.env.NODE_ENV="production"，他们是等效的)。会执行以下步骤：
+- 使用UglifyJsPlugin进行JS文件压缩（此插件只支持ES5，因此需要借助babel）
+- 运行LoaderOptionsPlugin
+- 设置NodeJS环境变量，触发某些package包，以不同的方式进行编译

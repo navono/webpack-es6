@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:dist": "webpack --env=prod --progress --profile --colors",
     "watch": "webpack --progress --watch",
-    "start": "webpack-dev-server --inline"
+    "start": "webpack-dev-server --env=dev --inline --progress --profile --colors"
   },
   "author": "",
   "license": "ISC",
