@@ -11,11 +11,14 @@ module.exports = {
   // 继续编辑和保存来自Chrome或源文件的更改。
 
   // entry: './src/index.js',
-  entry: [
-    path.resolve(__dirname, '../src/index.js'),
-    // 'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8888'
-  ],
+  entry: {
+    main: [
+      path.resolve(__dirname, '../src/index.js'),
+      // 'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8888'
+    ],
+    vendor: 'moment'
+  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '../build')
