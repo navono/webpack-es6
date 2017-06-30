@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+const PORT = 8888;
 
 module.exports = {
   // 因为webpack输出的bundle文件，当JavaScript抛出异常时，我们需要知道错误发生在哪个文件的哪一行
@@ -55,6 +58,9 @@ module.exports = {
     // 还有一种隐式公共 vendor chunk 的配置方法，参照官方的文档 Guide - 代码分离 库
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'manifest' ]  // 指定公共 bundle 的名字
+    }),
+    new OpenBrowserPlugin({
+      url: `http:\\localhost:${PORT}`
     })
 
     // 将 production的配置分离到独立的配置文件中
@@ -81,10 +87,11 @@ module.exports = {
   // },
 
   devServer: {
+    historyApiFallback: true,
     // 告诉 dev-server 在使用HMR
     hot: true,
     contentBase: path.resolve(__dirname, '../build'),
     publicPath: '/',
-    port: 8888,
+    port: PORT,
   }
 }
