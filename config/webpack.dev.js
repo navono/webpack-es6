@@ -14,7 +14,7 @@ module.exports = {
   // 继续编辑和保存来自Chrome或源文件的更改。
 
   entry: {
-    main: [
+    index: [
       path.resolve(__dirname, '../src/index.js'),
       // 'webpack/hot/dev-server',
       'webpack-dev-server/client?http://localhost:8888'
