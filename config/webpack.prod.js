@@ -4,7 +4,14 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/index.js'),
+  entry: {
+    main: [
+      path.resolve(__dirname, '../src/index.js'),
+      // 'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8888'
+    ],
+    vendor: 'moment'
+  },
   output: {
     filename: '[name].[chunkhash].js',  // 允许根据文件内容生成哈希值，要注意的是不要在开发环境下使用 chunkhash ,这样会增加编译时间
     path: path.resolve(__dirname, '../dist')
@@ -36,6 +43,9 @@ module.exports = {
       template: path.resolve(__dirname, '../index.html'),
       favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       inject: true
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,

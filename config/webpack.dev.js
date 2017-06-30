@@ -10,7 +10,6 @@ module.exports = {
   // devtool: "inline-source-map",
   // 继续编辑和保存来自Chrome或源文件的更改。
 
-  // entry: './src/index.js',
   entry: {
     main: [
       path.resolve(__dirname, '../src/index.js'),
@@ -52,6 +51,11 @@ module.exports = {
     // 启用 HMR
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('styles.css'),
+
+    // 还有一种隐式公共 vendor chunk 的配置方法，参照官方的文档 Guide - 代码分离 库
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'  // 指定公共 bundle 的名字
+    })
 
     // 将 production的配置分离到独立的配置文件中
     // new webpack.optimize.UglifyJsPlugin({
