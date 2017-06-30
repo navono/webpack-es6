@@ -54,7 +54,7 @@ module.exports = {
 
     // 还有一种隐式公共 vendor chunk 的配置方法，参照官方的文档 Guide - 代码分离 库
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'  // 指定公共 bundle 的名字
+      name: ['vendor', 'manifest' ]  // 指定公共 bundle 的名字
     })
 
     // 将 production的配置分离到独立的配置文件中

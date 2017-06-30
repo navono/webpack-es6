@@ -45,7 +45,7 @@ module.exports = {
       inject: true
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      name: ['vendor', 'manifest' ]
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
