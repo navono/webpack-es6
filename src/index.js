@@ -2,12 +2,12 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-28 15:20:50
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-29 10:42:11
+ * @Last Modified time: 2017-06-29 16:17:00
  * @Description
  */
 import _ from 'lodash';
 import './styles/style.css';
-import Icon from './icon.svg'
+import Icon from './assets/icon.svg'
 import Library from './components/library'
 import {cube} from './components/maths'   // 展示 Tree Shaking 技术，它依赖于 ES2015 模块系统中 import/export 的静态结构特性
 

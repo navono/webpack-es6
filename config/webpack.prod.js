@@ -34,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Wellcom webpack',
       template: path.resolve(__dirname, '../index.html'),
-      favicon: path.resolve(__dirname, '../src/favicon.ico'),
+      favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       inject: true
     }),
     new webpack.LoaderOptionsPlugin({
