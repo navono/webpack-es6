@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.4",
+    "spa-history": "^0.5.1",
     "webpack": "^2.6.1"
   },
   "devDependencies": {
