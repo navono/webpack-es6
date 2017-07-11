@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack --env=dev --progress --profile --colors",
-    "build:dist": "webpack --env=prod --progress --profile --colors",
+    "build:dev": "npm run clean:Build && webpack --env=dev --progress --profile --colors",
+    "build:dist": "npm run clean:Dist && webpack --env=prod --progress --profile --colors",
     "watch": "webpack --progress --watch",
-    "start": "webpack-dev-server --env=dev --inline --progress --profile --colors"
+    "start": "webpack-dev-server --env=dev --inline --progress --profile --colors",
+    "clean:Build": "rimraf build",
+    "clean:Dist": "rimraf dist"
   },
   "author": "",
   "license": "ISC",
@@ -19,16 +21,23 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "eslint-config-enough": "^0.2.7",
+    "eslint-loader": "^1.9.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.29.0",
     "moment": "^2.18.1",
     "open-browser-webpack-plugin": "^0.0.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
     "webpack-dev-server": "^2.5.0"
   }
 }

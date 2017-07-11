@@ -2,39 +2,53 @@
  * @Author: Ping Qixing
  * @Date: 2017-06-28 15:20:50
  * @Last Modified by: Ping Qixing
- * @Last Modified time: 2017-06-30 08:32:41
+ * @Last Modified time: 2017-07-11 08:51:28
  * @Description
  */
-import _ from 'lodash';
-import './styles/style.css';
-import Icon from './assets/icon.svg'
-import Library from './components/library'
-import {cube} from './components/maths'   // 展示 Tree Shaking 技术，它依赖于 ES2015 模块系统中 import/export 的静态结构特性
-import moment from 'moment';
+// 引入作为全局对象储存空间的global.js, js文件可以省略后缀
 
-// 测试 HMR
-if (module.hot) {
-  module.hot.accept('./components/library', () => {
-    console.log('Accepting the updated module!');
-    Library.log();
-    console.log(moment().format());
-  })
+import g from './global'
+
+// 引入页面文件
+import foo from './views/foo'
+import bar from './views/bar'
+
+const routes = {
+  '/foo': foo,
+  '/bar': bar
 }
 
-function component() {
-  let element = document.createElement('div');
+// Router类, 用来控制页面根据当前URL切换
+class Router {
+  start() {
+    // 点击浏览器后退/前进按钮时会触发window.onpopstate事件, 我们在这时切换到相应页面
+    // https://developer.mozilla.org/en-US/docs/Web/Events/popstate
+    window.addEventListener('popstate', () => {
+      this.load(location.pathname)
+    })
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+    // 打开页面时加载当前页面
+    this.load(location.pathname)
+  }
 
-  // 将图像添加到我们现有的 div。
-  let myIcon = new Image();
-  myIcon.src = Icon;
+  // 前往path, 会变更地址栏URL, 并加载相应页面
+  go(path) {
+    // 变更地址栏URL
+    history.pushState({}, '', path)
+    // 加载页面
+    this.load(path)
+  }
 
-  element.appendChild(myIcon);
-
-  return element;
+  // 加载path路径的页面
+  load(path) {
+    // 创建页面实例
+    const view = new routes[path]()
+    // 调用页面方法, 把页面加载到document.body中
+    view.mount(document.body)
+  }
 }
 
-document.body.appendChild(component());
+// new一个路由对象, 赋值为g.router, 这样我们在其他js文件中可以引用到
+g.router = new Router()
+// 启动
+g.router.start()
