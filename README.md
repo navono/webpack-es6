@@ -49,3 +49,6 @@ redux HMR
 - 使用UglifyJsPlugin进行JS文件压缩（此插件只支持ES5，因此需要借助babel）
 - 运行LoaderOptionsPlugin
 - 设置NodeJS环境变量，触发某些package包，以不同的方式进行编译
+
+
+这是来自navonoTest的修改。
